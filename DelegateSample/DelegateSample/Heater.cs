@@ -19,11 +19,8 @@ namespace DelegateSample
         //可以提供继承自Heater的类重写，以便继承类拒绝其他对象对它的监视
         protected virtual void OnBoiled(BoiledEventArgs args)
         {
-            if (Boiled != null)
-            {
-                //如果有对象注册
-                Boiled(this,args);//调用所有注册对象的方法
-            }
+            //如果有对象注册
+            Boiled?.Invoke(this, args);//调用所有注册对象的方法
         }
 
         //烧水
