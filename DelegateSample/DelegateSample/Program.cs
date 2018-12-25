@@ -26,7 +26,27 @@ namespace DelegateSample
 
             heater.BoilWater();   //烧水，会自动调用注册过对象的方法
 
+
+            //让事件只允许一个客户订阅
+            //方法一：
+            Publisher publisher = new Publisher();
+            publisher.Register(new GeneralEventHandler(Hello));
+            publisher.Register(new GeneralEventHandler((new Program()).Bye));
+            publisher.DoSomething();
+
+            //方法二：
+
             Console.ReadLine();
+        }
+
+        static string Hello()
+        {
+            return "Hello,World!";
+        }
+
+        string Bye()
+        {
+            return "Bye!Bye!";
         }
     }
 }
