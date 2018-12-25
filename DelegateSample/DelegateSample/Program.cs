@@ -35,6 +35,10 @@ namespace DelegateSample
             publisher.DoSomething();
 
             //方法二：
+            Publisher1 publisher1 = new Publisher1();
+            publisher1.NumberChanged += (new Subscriber1()).OnNumberChanged;
+            publisher1.NumberChanged += (new Subscriber2()).OnNumberChanged;
+            publisher1.DoSomething();
 
             Console.ReadLine();
         }
